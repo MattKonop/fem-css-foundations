@@ -1,19 +1,40 @@
 :root {
   --color-primary: #ff7b54;
-  --color-test-on-primary: #ffffff;
+  --color-text-on-primary: #ffffff;
   --font-family: "Roboto", sans-serif;
+  --color-button-border: var(--color-text-on-primary);
+
+  --color-button-primary-background: var(--color-text-on-primary);
+  --color-button-primary-text: var(--color-primary);
+  --color-button-secondary-background: var(var(--color-primary));
+  --color-button-secondary-text: var(var(--color-text-on-primary));
 }
 body {
-  background-color: var(--color-primary);
-  color: var(--color-test-on-primary);
   font-family: var(--font-family);
+}
+.body--primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-on-primary);
+}
+.body--secondary {
+  background-color: var(--color-text-on-primary);
+  color: var(--color-primary);
+}
+
+h2 {
+  margin: 0;
+}
+p {
+  margin: 0;
 }
 
 a {
   color: inherit;
   text-decoration: none;
 }
-
+.menu {
+  display: none;
+}
 .header {
   display: grid;
   grid-template-columns: 1fr 3fr 34px;
@@ -46,4 +67,81 @@ header img {
   margin-right: 36px;* */
   margin-inline-end: 36px;
   font-size: 20px;
+}
+
+.button {
+  font-size: 32px;
+  padding: 0 64px;
+  height: 100px;
+  border: 4px solid var(--color-button-border);
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: outline 0.2s linear;
+}
+.button:hover,
+.button:focus {
+  outline: 2px solid var(--color-text-on-primary);
+}
+.button--primary {
+  background: var(--color-button-primary-background);
+  color: var(--color-button-primary-text);
+}
+.button--secondary {
+  background: var(--color-button-secondary-background);
+  color: var(--color-button-secondary-text);
+}
+
+.button-container {
+  display: flex;
+  margin-top: 100px;
+}
+.button:not(button:last-of-type) {
+  margin-inline-end: 20px;
+}
+.button__icon {
+  vertical-align: middle;
+}
+
+.main {
+  padding: 150px;
+  font-size: 98px;
+}
+@media (max-width: 840px) {
+  .menu {
+    display: block;
+  }
+  .nav {
+    display: none;
+  }
+  .header {
+    display: grid;
+    grid-template-columns: 33px 1fr 34px;
+    justify-items: center;
+  }
+}
+@media (max-width: 1220px) {
+  .button {
+    font-size: 24px;
+    padding: 0 32px;
+    height: 70px;
+  }
+  .button__icon {
+    width: 20px;
+  }
+}
+@media (max-width: 815px) {
+  .main {
+    padding: 75px;
+  }
+}
+
+@media (max-width: 700px) {
+  .button {
+    font-size: 16px;
+    margin-top: 24px;
+  }
+  .button-container {
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
 }
